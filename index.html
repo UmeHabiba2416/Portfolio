@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Friendly - Your Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .tab-active {
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+        }
+        
+        .lecture-card {
+            transition: all 0.2s ease;
+        }
+        
+        .lecture-card:hover {
+            background-color: #f9fafb;
+        }
+        
+        .bookmark-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .bookmark-btn:hover {
+            color: #667eea;
+        }
+        
+        .bookmark-btn.bookmarked {
+            color: #667eea;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .channel-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .channel-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="gradient-bg text-white p-2 rounded-lg">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Student Friendly</h1>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search channels or lectures..." 
+                               class="search-input w-64 px-4 py-2 pr-10 border border-gray-300 rounded-full focus:outline-none focus:border-purple-500 transition-all">
+                        <button class="absolute right-3 top-2.5 text-gray-400 hover:text-purple-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    
+                    <button class="relative p-2 text-gray-600 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-bookmark text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-purple-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    
+                    <button class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                        <i class="fas fa-user-circle mr-2"></i>Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-8">
+                <button class="tab-btn py-4 px-2 font-medium text-gray-700 hover:text-purple-600 transition-colors tab-active" data-tab="featured">
+                    Featured Channels
+                </button>
+                <button class="tab-btn py-4 px-2 font-medium text-gray-700 hover:text-purple-600 transition-colors" data-tab="subjects">
+                    Browse by Subject
+                </button>
+                <button class="tab-btn py-4 px-2 font-medium text-gray-700 hover:text-purple-600 transition-colors" data-tab="recent">
+                    Recent Lectures
+                </button>
+                <button class="tab-btn py-4 px-2 font-medium text-gray-700 hover:text-purple-600 transition-colors" data-tab="playlists">
+                    My Playlists
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Featured Channels Section -->
+        <section id="featured" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Featured Educational Channels</h2>
+                <p class="text-gray-600">Discover top-quality educational content from trusted creators</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Channel Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/channel1/400/200.jpg" alt="Channel Banner" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            <i class="fas fa-fire mr-1"></i>Popular
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/seed/avatar1/50/50.jpg" alt="Channel Avatar" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <h3 class="font-semibold text-lg">Math Mastery</h3>
+                                <p class="text-sm text-gray-500">1.2M subscribers</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Comprehensive math tutorials from algebra to calculus. Perfect for students at all levels.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="channel-badge bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Mathematics</span>
+                                <span class="channel-badge bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">STEM</span>
+                            </div>
+                            <button class="text-purple-600 hover:text-purple-700 font-medium">
+                                View Channel <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Channel Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/channel2/400/200.jpg" alt="Channel Banner" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            <i class="fas fa-check mr-1"></i>Verified
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/seed/avatar2/50/50.jpg" alt="Channel Avatar" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <h3 class="font-semibold text-lg">Science Explained</h3>
+                                <p class="text-sm text-gray-500">850K subscribers</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Making complex science concepts simple and fun through engaging visual explanations.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="channel-badge bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Physics</span>
+                                <span class="channel-badge bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">Chemistry</span>
+                            </div>
+                            <button class="text-purple-600 hover:text-purple-700 font-medium">
+                                View Channel <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Channel Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/channel3/400/200.jpg" alt="Channel Banner" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            <i class="fas fa-star mr-1"></i>Top Rated
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/seed/avatar3/50/50.jpg" alt="Channel Avatar" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <h3 class="font-semibold text-lg">History Uncovered</h3>
+                                <p class="text-sm text-gray-500">620K subscribers</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Journey through time with captivating historical narratives and analyses.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="channel-badge bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">History</span>
+                                <span class="channel-badge bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Humanities</span>
+                            </div>
+                            <button class="text-purple-600 hover:text-purple-700 font-medium">
+                                View Channel <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse by Subject Section -->
+        <section id="subjects" class="tab-content hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Browse by Subject</h2>
+                <p class="text-gray-600">Find lectures and channels organized by academic subjects</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <button class="subject-card bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-calculator text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Mathematics</h3>
+                    <p class="text-sm opacity-90">245 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-flask text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Science</h3>
+                    <p class="text-sm opacity-90">189 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-book text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Literature</h3>
+                    <p class="text-sm opacity-90">156 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-red-500 to-red-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-landmark text-3xl mb-3"></i>
+                    <h3 class="font-semibold">History</h3>
+                    <p class="text-sm opacity-90">134 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-palette text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Arts</h3>
+                    <p class="text-sm opacity-90">98 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-indigo-500 to-indigo-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-laptop-code text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Computer Science</h3>
+                    <p class="text-sm opacity-90">276 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-pink-500 to-pink-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-language text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Languages</h3>
+                    <p class="text-sm opacity-90">167 channels</p>
+                </button>
+                <button class="subject-card bg-gradient-to-r from-gray-500 to-gray-600 text-white p-6 rounded-xl hover:shadow-lg transition-all">
+                    <i class="fas fa-ellipsis-h text-3xl mb-3"></i>
+                    <h3 class="font-semibold">More</h3>
+                    <p class="text-sm opacity-90">All subjects</p>
+                </button>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Popular in Mathematics</h3>
+                <div class="space-y-4">
+                    <div class="lecture-card flex items-center justify-between p-4 rounded-lg border border-gray-200">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/lecture1/120/80.jpg" alt="Lecture Thumbnail" class="w-32 h-20 rounded-lg mr-4 object-cover">
+                            <div>
+                                <h4 class="font-semibold">Introduction to Calculus: Limits</h4>
+                                <p class="text-sm text-gray-600">Math Mastery • 45 min • 2 days ago</p>
+                                <div class="flex items-center mt-2 text-sm text-gray-500">
+                                    <span class="mr-4"><i class="fas fa-eye mr-1"></i>15.2K views</span>
+                                    <span><i class="fas fa-thumbs-up mr-1"></i>98% positive</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button class="bookmark-btn p-2 text-gray-400 hover:text-purple-600">
+                                <i class="far fa-bookmark text-xl"></i>
+                            </button>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                                <i class="fas fa-play mr-2"></i>Watch
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-card flex items-center justify-between p-4 rounded-lg border border-gray-200">
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/seed/lecture2/120/80.jpg" alt="Lecture Thumbnail" class="w-32 h-20 rounded-lg mr-4 object-cover">
+                            <div>
+                                <h4 class="font-semibold">Linear Algebra: Matrix Operations</h4>
+                                <p class="text-sm text-gray-600">Math Academy • 1h 20min • 5 days ago</p>
+                                <div class="flex items-center mt-2 text-sm text-gray-500">
+                                    <span class="mr-4"><i class="fas fa-eye mr-1"></i>8.7K views</span>
+                                    <span><i class="fas fa-thumbs-up mr-1"></i>95% positive</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button class="bookmark-btn p-2 text-gray-400 hover:text-purple-600">
+                                <i class="far fa-bookmark text-xl"></i>
+                            </button>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                                <i class="fas fa-play mr-2"></i>Watch
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Lectures Section -->
+        <section id="recent" class="tab-content hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Recent Lectures</h2>
+                <p class="text-gray-600">Stay updated with the latest educational content</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Lecture Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/recent1/400/225.jpg" alt="Lecture Thumbnail" class="w-full h-48 object-cover">
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+                            32:45
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Quantum Physics: Wave-Particle Duality</h3>
+                        <p class="text-sm text-gray-600 mb-3">Physics Lab • 3 hours ago</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <span class="mr-3"><i class="fas fa-eye mr-1"></i>2.1K</span>
+                                <span><i class="fas fa-clock mr-1"></i>Today</span>
+                            </div>
+                            <button class="bookmark-btn p-2 text-gray-400 hover:text-purple-600">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lecture Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/recent2/400/225.jpg" alt="Lecture Thumbnail" class="w-full h-48 object-cover">
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+                            28:15
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Shakespeare: Understanding Sonnets</h3>
+                        <p class="text-sm text-gray-600 mb-3">Literature Hub • 5 hours ago</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <span class="mr-3"><i class="fas fa-eye mr-1"></i>1.8K</span>
+                                <span><i class="fas fa-clock mr-1"></i>Today</span>
+                            </div>
+                            <button class="bookmark-btn p-2 text-gray-400 hover:text-purple-600">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lecture Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/recent3/400/225.jpg" alt="Lecture Thumbnail" class="w-full h-48 object-cover">
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+                            45:30
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Machine Learning: Neural Networks Basics</h3>
+                        <p class="text-sm text-gray-600 mb-3">Code Academy • 8 hours ago</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <span class="mr-3"><i class="fas fa-eye mr-1"></i>3.5K</span>
+                                <span><i class="fas fa-clock mr-1"></i>Today</span>
+                            </div>
+                            <button class="bookmark-btn p-2 text-gray-400 hover:text-purple-600">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Playlists Section -->
+        <section id="playlists" class="tab-content hidden">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">My Playlists</h2>
+                    <p class="text-gray-600">Organize and save your favorite lectures</p>
+                </div>
+                <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                    <i class="fas fa-plus mr-2"></i>Create New Playlist
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Playlist Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <div class="grid grid-cols-2 gap-1 p-2 bg-gray-100">
+                            <img src="https://picsum.photos/seed/playlist1a/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                            <img src="https://picsum.photos/seed/playlist1b/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                            <img src="https://picsum.photos/seed/playlist1c/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                            <img src="https://picsum.photos/seed/playlist1d/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+                            12 videos
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Calculus Study Guide</h3>
+                        <p class="text-sm text-gray-600 mb-3">Last updated: 2 days ago</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">4h 32min total</span>
+                            <button class="text-purple-600 hover:text-purple-700 font-medium">
+                                View All <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Playlist Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <div class="grid grid-cols-2 gap-1 p-2 bg-gray-100">
+                            <img src="https://picsum.photos/seed/playlist2a/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                            <img src="https://picsum.photos/seed/playlist2b/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                            <img src="https://picsum.photos/seed/playlist2c/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                            <img src="https://picsum.photos/seed/playlist2d/150/100.jpg" alt="Video" class="w-full h-24 object-cover rounded">
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+                            8 videos
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">World History Revision</h3>
+                        <p class="text-sm text-gray-600 mb-3">Last updated: 1 week ago</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">3h 15min total</span>
+                            <button class="text-purple-600 hover:text-purple-700 font-medium">
+                                View All <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create New Playlist Card -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover border-2 border-dashed border-gray-300 flex items-center justify-center h-64">
+                    <div class="text-center">
+                        <i class="fas fa-plus-circle text-4xl text-gray-400 mb-3"></i>
+                        <h3 class="font-semibold text-gray-700 mb-2">Create New Playlist</h3>
+                        <p class="text-sm text-gray-500">Organize your favorite lectures</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="bg-white text-purple-600 p-2 rounded-lg">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Student Friendly</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Your gateway to quality educational content from YouTube.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">For Educators</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Support</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">Subscribe to our newsletter for updates</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-700 text-white px-3 py-2 rounded-l-lg flex-1 focus:outline-none focus:bg-gray-600">
+                        <button class="bg-purple-600 px-4 py-2 rounded-r-lg hover:bg-purple-700 transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Student Friendly. All rights reserved. Made with <i class="fas fa-heart text-red-500"></i> for students everywhere.</p>
+                <p class="mt-2 text-purple-400 font-medium">Designed by Um e Habiba</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                tabContents.forEach(content => content.classList.add('hidden'));
+                
+                // Add active class to clicked button and show corresponding content
+                button.classList.add('tab-active');
+                document.getElementById(targetTab).classList.remove('hidden');
+                
+                // Add fade-in animation
+                document.getElementById(targetTab).classList.add('fade-in');
+            });
+        });
+        
+        // Bookmark functionality
+        const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+        
+        bookmarkButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('bookmarked');
+                const icon = button.querySelector('i');
+                
+                if (button.classList.contains('bookmarked')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // In a real application, this would filter content
+            // For demo purposes, we'll just log the search term
+            if (searchTerm.length > 2) {
+                console.log('Searching for:', searchTerm);
+            }
+        });
+        
+        // Subject card hover effect
+        const subjectCards = document.querySelectorAll('.subject-card');
+        
+        subjectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // In a real application, this would navigate to the subject page
+                console.log('Navigating to subject:', card.querySelector('h3').textContent);
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add loading animation for images
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('load', () => {
+                img.classList.add('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>
