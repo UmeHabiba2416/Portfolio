@@ -5,7 +5,7 @@
 
 **A modern, responsive portfolio website showcasing my work as a Full Stack Developer & UI/UX Designer.**
 
-🔗 **[Live Demo](#)** (Add your live URL here)
+🔗 **[Live Demo](#)** (https://umehabiba2416.github.io/Portfolio/)
 
 ---
 
@@ -20,10 +20,7 @@
 - Custom Cursor: Unique cursor effects for a premium feel.
 
 ## 🛠 Technologies Used
-HTML5, CSS3, JavaScript, React (optional), Vue.js (optional), CSS Grid, Flexbox, EmailJS, Git, GitHub, Netlify/Vercel.
-
-## 📂 Project Structure
-
+HTML5, CSS3, JavaScript, CSS Grid, Flexbox, EmailJS.
 
 ## 🚀 How to Use
 1. **Clone the repo**:
@@ -32,17 +29,9 @@ HTML5, CSS3, JavaScript, React (optional), Vue.js (optional), CSS Grid, Flexbox,
    cd your-portfolio
    ```
 ## 🤝 Connect With Me
-- Email: [umehabiba1624@gmail.com](mailto:umehabiba1624@gmail.com)
-- LinkedIn: [linkedin.com/in/umehabiba]([https://www.linkedin.com/in/um-e-habiba-031b6a301/])
-- GitHub: [github.com/umehabiba](#)
-- Portfolio: [your-portfolio-url.com](#)
+- Email: umehabiba1624@gmail.com
+- LinkedIn: https://www.linkedin.com/in/um-e-habiba-031b6a301/
+- GitHub: https://github.com/UmeHabiba2416
+- Portfolio: https://umehabiba2416.github.io/Portfolio/
 
-## 💖 Acknowledgements
-Font Awesome, Google Fonts, EmailJS, Unsplash.
-
-## 📄 License
-MIT License.
-
----
 © 2025 Ume Habiba. All rights reserved.
-```
