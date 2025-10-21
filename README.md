@@ -33,7 +33,7 @@ HTML5, CSS3, JavaScript, React (optional), Vue.js (optional), CSS Grid, Flexbox,
    ```
 ## 🤝 Connect With Me
 - Email: [umehabiba1624@gmail.com](mailto:umehabiba1624@gmail.com)
-- LinkedIn: [linkedin.com/in/umehabiba]([(https://www.linkedin.com/in/um-e-habiba-031b6a301/]))
+- LinkedIn: [linkedin.com/in/umehabiba]([https://www.linkedin.com/in/um-e-habiba-031b6a301/]))
 - GitHub: [github.com/umehabiba](#)
 - Portfolio: [your-portfolio-url.com](#)
 
