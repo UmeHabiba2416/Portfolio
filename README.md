@@ -31,19 +31,9 @@ HTML5, CSS3, JavaScript, React (optional), Vue.js (optional), CSS Grid, Flexbox,
    git clone https://github.com/your-username/your-portfolio.git
    cd your-portfolio
    ```
-2. **Customize content**: Update your personal info, replace images, update projects, skills, and experience.
-3. **Set Up EmailJS**: Sign up at [EmailJS](https://www.emailjs.com/), create a service/template, and replace the placeholders in the JS.
-4. **Deploy**: Use Netlify, Vercel, or GitHub Pages.
-
-## 🎨 Customization Tips
-- Change colors in `:root` CSS variables.
-- Update fonts via Google Fonts.
-- Adjust animations and effects in CSS.
-- Add/remove projects, skills, or sections as needed.
-
 ## 🤝 Connect With Me
 - Email: [umehabiba1624@gmail.com](mailto:umehabiba1624@gmail.com)
-- LinkedIn: [linkedin.com/in/umehabiba](#)
+- LinkedIn: [linkedin.com/in/umehabiba]([#](https://www.linkedin.com/in/um-e-habiba-031b6a301/))
 - GitHub: [github.com/umehabiba](#)
 - Portfolio: [your-portfolio-url.com](#)
 
