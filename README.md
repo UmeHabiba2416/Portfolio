@@ -23,14 +23,7 @@
 HTML5, CSS3, JavaScript, React (optional), Vue.js (optional), CSS Grid, Flexbox, EmailJS, Git, GitHub, Netlify/Vercel.
 
 ## 📂 Project Structure
-```
-portfolio/
-├── index.html
-├── assets/
-├── styles/
-├── scripts/
-└── README.md
-```
+
 
 ## 🚀 How to Use
 1. **Clone the repo**:
